@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Login Citizen</title>
+	<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+
+  <!-- Icons -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <style type="text/css">
+  	.card{
+  		  position: absolute;
+		  top: 50%;
+		  left: 50%;
+		  transform: translate(-50%,-50%);
+  	}
+  </style>
+
+</head>
+<body>
+
+	<div class="container p-5">
+		<div class="row">
+				<div class="col-md-3"></div>
+
+				<div class="card col-md-6 col-xs-12 col-sm-12">
+				    <div class="card-body">
+				      <h4 class="card-title">Login</h4>
+				      <div class="card-text">
+				      	<form action="/login_citizen" method="POST">
+				      	  <div class="form-group">
+						    <label for="username">Username</label>
+						    <input type="text" class="form-control" id="username" name="username" required autofocus>
+						  </div>
+						  	<div class="form-group">
+						    <label for="password">Password</label>
+						    <input type="password" class="form-control" id="password" name="password" required>
+						  </div>
+						  <input type="submit" id="submit" value="Login" class="btn btn-primary">
+						  <div class="m-2">
+						  	<a href="#">Forgot password?</a></br>
+						  	<a href="/register_citizen">Don't have an account?</a>
+						  </div>
+						</form>
+				      </div>
+				    </div>
+				  </div>
+			<div class="col-md-3"></div>
+		</div>
+	</div>
+</body>
+</html>

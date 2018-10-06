@@ -1,0 +1,98 @@
+<% include ../partials/header %>
+
+<div class="container p-3">
+		<div class="row">
+			<div class="col-lg-5">
+				<div class="card">
+				  <img class="card-img-top img-fluid" src="<%= problem.image %>" alt="Card image">
+				  <div class="card-body">
+				    <h4 class="card-title"><%= problem.name %></h4>
+				    <div class="card-text">
+				    	<div>
+				    		<%= problem.content %>
+				    	</div>
+				    	
+				    	<div>
+				    		<% if(currentUser && currentUser.ward==problem.ward){ %>
+					    		<button class="btn btn-primary">Resolve</button>
+					    		<button class="btn btn-danger">End</button>
+					    	<% } %>
+				    	</div>
+				    	
+				    	<div>
+				    		<% if(currentUser && problem.issuer.id.equals(currentUser._id)){ %>
+		                        <a href="/problems/<%= problem._id %>/edit" class="btn btn-warning m-2">Edit</a>
+		                        <!--<form id="delete-form" action="/problems/<%= problem._id %>?_method=DELETE" method="POST">-->
+		                        <!--    <button class=" btn btn-danger m-2">Delete</button>-->
+		                        <!--</form>-->
+		                    <% } %>
+				    	</div>
+				    </div>
+				  </div>
+				</div>
+			</div>
+			
+			<div class="col-lg-6 offset-lg-1">
+				<!-- <div>
+					<code>//Insert Map</code>
+				</div> -->
+				<div class="row map-container text-center">
+		    		<iframe
+						width="100%"
+						height=400px
+						frameborder="0" style="border:0"
+						src="https://www.google.com/maps/embed/v1/place?key=AIzaSyAE4x8s87dyYr_6auXG9CG2BEFpgXnIwC4 &q='<%=problem.geolocation%>'">
+					</iframe>
+		    	</div>
+
+			</div>
+		</div>
+	</div>
+
+<div class="container">
+	<div class"text-center m-2">
+		<b>Comments</b>
+	</div>
+					
+	<div class="text-right">
+		<a class="btn btn-primary m-2" href="/problems/<%=problem._id%>/comments/new">Add new comment</a>
+	</div>
+	<hr>
+					
+	<div class="text-left m-2" style="box-shadow:0px 0px 5px blue;">
+	<!--<div style="border: 2px solid black">-->
+		<strong>Greeva</strong>
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
+		<strong>Kunj</strong>
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
+			
+	<!--<% problem.comments.forEach(function(comment){ %>-->
+	<!--	<div class="row">-->
+	<!--	    <div class="col-md-12 col-lg-12">-->
+		    	
+	<!--	        <strong><%= comment.author.username %></strong>-->
+	<!--	        <span class="pull-right">10 days ago</span>-->
+	<!--	        <p><%= comment.text %></p>-->
+		                        
+	<!--	        <% if(currentUser && comment.author.id.equals(currentUser._id)){ %>-->
+	<!--	        <a class="btn btn-xs btn-warning" href="/problems/<%=problem._id%>/comments/<%=comment._id%>/edit">Edit</a>-->
+	<!--	        <form id="delete-form" action="/problems/<%=problem._id%>/comments/<%=comment._id%>?_method=DELETE" method="POST">-->
+	<!--	            <input type="submit" class= "btn btn-xs btn-danger" value="Delete">-->
+	<!--	        </form>-->
+	<!--	        <% } %>-->
+	
+		<!--<div class="row">-->
+		<!--	<div class="col-md-12">-->
+		<!--		<strong>Greeva</strong>-->
+		<!--		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>-->
+		<!--		<strong>Kunj</strong>-->
+		<!--		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>-->
+		<!--	</div>-->
+		<!--</div>-->
+		    </div>
+		</div>
+		<% }); %>
+	</div>
+</div>
+
+<% include ../partials/footer %>

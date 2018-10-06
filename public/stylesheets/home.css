@@ -1,0 +1,79 @@
+html, body{
+	padding: 0;
+	margin: 0;
+}
+
+.description {
+  background: url(../images/bg_image.jpg);
+  background-size: cover;
+  background-position: center center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  height:100vh;
+  min-height:100vh;
+  z-index: -10;
+}
+
+.overlay{
+	position: absolute;
+	background-color: rgba(0,0,0,0.5);
+	top: 0;
+	bottom: 0;
+	height: 100%;
+	width: 100%;
+}
+
+.title-brand{
+	margin-top: 50px;
+}
+
+.name-tag{
+  color:#ffffff;
+  font-size: 60px;
+  font-weight: 300;
+  letter-spacing: 2px;
+}
+.tagline{
+  margin-top: 1%;
+  color:#cfd8dc;
+  font-size: 24px;
+}
+
+.container-margin{
+	margin-top: 50px;
+}
+
+a.custom-card,
+a.custom-card:hover {
+  color: inherit;
+}
+
+.card a{
+    color: black;
+    text-decoration: none;
+}
+
+.card-header{
+  color: #fff;
+  font-size: 20px;
+  /*height: 50%;*/
+}
+
+/*Problems New Form */
+	
+/* For thumbnails in Index Page */
+.thumbnail img{
+    width: 100%;
+}
+
+.thumbnail{
+    padding: 0;
+}
+
+.thumbnail .caption-full{
+    padding: 9px;
+}
+
+#delete-form{
+    display: inline;
+}

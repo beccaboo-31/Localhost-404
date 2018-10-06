@@ -1,0 +1,112 @@
+<% include ../partials/header %>
+
+    <div class="container">
+	    <header class="jumbotron">
+	        <div class="container text-center">
+	            <h1>Welcome to Voices Of Mumbai!</h1>
+	            
+	            <p>The list of all the problems in Mumbai</p>
+	            <% if(currentUser && currentUser.ward=="User"){ %>
+	            	<p><a class="btn btn-primary btn-large" href="/problems/create">Add new problem</a></p>
+	            <% }else{ %>
+	            	<p></p>
+	            <% } %>
+	        </div>
+	    </header>
+	        
+	    <div class="row text-center" style="display: flex flex-wrap: wrap">
+	        <% problems.forEach(function(problem){ %>
+	            <div class="col-sm-6 col-md-3">
+	                <div class="thumbnail">
+	                    <img src="<%= problem.image %>">
+	                    <div class="caption">
+	                        <h4><%= problem.name %></h4>
+	                    </div>
+	                    <p>
+	                        <a href="/problems/<%= problem._id %>" class="btn btn-primary">More Info</a>
+	                    </p>
+	                </div>
+	            </div>
+	        <% }); %>
+	    </div>
+	</div>
+	
+	<div class="container">
+		<h2>Click over markers to see the tag</h2>
+	</div>
+
+	 <div id="map" style="height: 600px; width: 100%;"></div>
+  <script>
+    function initMap(){
+      // Map options
+      var options = {
+        zoom:11,
+        center:{lat:19.0760,lng:72.8777}
+      }
+
+      // New map
+      var map = new google.maps.Map(document.getElementById('map'), options);
+      // Array of markers
+      var markers = [
+        {
+          coords:{lat:9.1196773,lng:72.9050809},
+          iconImage:'http://maps.google.com/mapfiles/ms/icons/green-dot.png',
+          content:'<h3>Others</h3>'
+        },
+        {
+          coords:{lat:19.0787678,lng:72.91265489999999},
+          iconImage:'http://maps.google.com/mapfiles/ms/icons/red-dot.png',
+          content:'<h3>Over-Crowding</h3>'
+        },
+        {
+          coords:{lat:19.1998211,lng:72.84259399999999},
+          iconImage:'http://maps.google.com/mapfiles/ms/icons/yellow-dot.png',
+          content:'<h3>Power</h3>'
+        },
+        {
+          coords:{lat:19.098821,lng:72.8320717},
+          iconImage:'http://maps.google.com/mapfiles/ms/icons/blue-dot.png',
+          content:'<h3>Water</h3>'
+        }
+      ];
+
+      // Loop through markers
+      for(var i = 0;i < markers.length;i++){
+        // Add marker
+        addMarker(markers[i]);
+      }
+
+      // Add Marker Function
+      function addMarker(props){
+        var marker = new google.maps.Marker({
+          position:props.coords,
+          map:map,
+          //icon:props.iconImage
+        });
+
+        // Check for customicon
+        if(props.iconImage){
+          // Set icon image
+          marker.setIcon(props.iconImage);
+        }
+
+        // Check content
+        if(props.content){
+          var infoWindow = new google.maps.InfoWindow({
+            content:props.content
+          });
+
+          marker.addListener('click', function(){
+            infoWindow.open(map, marker);
+          });
+
+        }
+      }
+    }
+  </script>
+  <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAE4x8s87dyYr_6auXG9CG2BEFpgXnIwC4&callback=initMap">
+    </script>
+
+
+<% include ../partials/footer %>
