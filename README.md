@@ -1,5 +1,6 @@
 # Localhost-404 #
-Submission for KJSCE Hackathon 2018 [Voices of Mumbai]
+Submission for KJSCE Hackathon 2018 [Voices of Mumbai].
+
 
 ## Problem Statement ##
 * To make an application portal where citizens can report their problems on the streets of Mumbai. 
